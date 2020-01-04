@@ -20,7 +20,7 @@ if [ "$(/etc/openclash/clash -v 2>/dev/null |awk -F ' ' '{print $2}')" != "$(sed
       /etc/init.d/openclash stop
       echo "OpenClash 内核下载成功，开始更新..." >$START_LOG\
       && rm -rf /etc/openclash/clash\
-      && mv /tmp/clash /etc/openclash/clash >/dev/null 2>&1
+      && ln -s /tmp/clash /etc/openclash/clash >/dev/null 2>&1
       if [ "$?" -eq "0" ]; then
          /etc/init.d/openclash start
          echo "核心程序更新成功！" >$START_LOG
